@@ -1,0 +1,1 @@
+truncate table   清空表

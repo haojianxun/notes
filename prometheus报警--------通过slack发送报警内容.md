@@ -4,59 +4,59 @@
 
 打开[slack](https://slack.com/)官网
 
-![1532775718883](C:\Users\Administrator\AppData\Local\Temp\1532775718883.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/19371697.jpg)
 
 
 
-2.邮箱注册![1532775781387](C:\Users\Administrator\AppData\Local\Temp\1532775781387.png)
+2.邮箱注册![](http://pe9685fps.bkt.clouddn.com/18-9-2/10854855.jpg)
 
 
 
  3.到邮箱去填验证码
 
-![1532775899253](C:\Users\Administrator\AppData\Local\Temp\1532775899253.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/13938653.jpg)
 
 4.填自己的名字
 
-![1532776360574](C:\Users\Administrator\AppData\Local\Temp\1532776360574.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/38520584.jpg)
 
 5.设置密码
 
-![1532776384141](C:\Users\Administrator\AppData\Local\Temp\1532776384141.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/46543482.jpg)
 
 6.填写相关信息
 
-![1532776439071](C:\Users\Administrator\AppData\Local\Temp\1532776439071.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/84321311.jpg)
 
 7.填公司名称
 
-![1532776479783](C:\Users\Administrator\AppData\Local\Temp\1532776479783.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/70251603.jpg)
 
 8.自定义url
 
-![1532776529455](C:\Users\Administrator\AppData\Local\Temp\1532776529455.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/34443446.jpg)
 
 9下一步,可以跳过
 
-![1532776573128](C:\Users\Administrator\AppData\Local\Temp\1532776573128.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/77991713.jpg)
 
 10.创建频道
 
-![1532776657702](C:\Users\Administrator\AppData\Local\Temp\1532776657702.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/61164320.jpg)
 
 11安装一个应用 incomming webhooks 
 
-![1532776789500](C:\Users\Administrator\AppData\Local\Temp\1532776789500.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/82718456.jpg)
 
 
 
-![1532776811638](C:\Users\Administrator\AppData\Local\Temp\1532776811638.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/64513740.jpg)
 
-![1532776843609](C:\Users\Administrator\AppData\Local\Temp\1532776843609.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/10138998.jpg)
 
-![1532776880135](C:\Users\Administrator\AppData\Local\Temp\1532776880135.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/18903748.jpg)
 
-![1532777041267](C:\Users\Administrator\AppData\Local\Temp\1532777041267.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/81000640.jpg)
 
 
 
@@ -130,7 +130,6 @@ scrape_configs:
    
    ```
 
-   
 
 ## 配置alertmanager
 
@@ -175,8 +174,6 @@ cp alertmanager.yml{,.bak}   //备份配置文件
    
    ```
 
-   
-
 3. 启动应用
 
    ```
@@ -198,9 +195,8 @@ cp alertmanager.yml{,.bak}   //备份配置文件
    
    ```
 
-   
 
 4.最后报警效果如下
 
-![1532778493461](C:\Users\Administrator\AppData\Local\Temp\1532778493461.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/43930972.jpg)
 

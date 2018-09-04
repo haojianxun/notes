@@ -97,7 +97,7 @@ systemctl enable docker && systemctl start docker
 systemctl enable kubelet && systemctl start kubelet
 ```
 
-
+*注意一定要安装docker-ce 而且要定义好docker的repo源 , 如果只是简单的把CentOS的源替换成了阿里源  ,在执行`yum install -y docker`的时候 下载的docker不是我们要的 ,用命令查看`docker version`会发现docker的版本是1.13的  安装的时候要安装docker-ce `yum install -y docker-ce` 安装完成查看版本的话 显示的是"18.06.0-ce"* 
 
 ### 设置docker加速器
 
@@ -140,19 +140,34 @@ systemctl status docker
 
 
 
+编辑kubelet文件
+
+在kubeadm初始化的时候可能会出现swap错误  v1.11.1其实已经不用再关swap了 以前的版本可能需要关闭 但是现在不需要了
+
+```
+vim /etc/sysconfig/kubelet
+
+KUBELET_EXTRA_ARGS="--fail-swap-on=false"
+KUBE_PROXY_MODE=ipvs     //启用ipvs  这种service模式这个只有在v1.11.1才能 v1.11.1以下的都不支持
+```
+
+
+
+
+
 ### 提前准备拉去所需镜像
 
 众所周知,因为被墙的关系所以kubeadm下载镜像的时候会出问题,这个就是比较头疼的了,
 
 使用`kubeadm init`之后会出现以下情况:
 
-![](C:\Users\Administrator\Desktop\pic-user-blog\kubeadm init不能连接google报错.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/30068876.jpg)
 
 
 
 或者是这样的
 
-![1533117902907](C:\Users\Administrator\AppData\Local\Temp\1533117902907.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/35457829.jpg)
 
 
 
@@ -253,7 +268,7 @@ kubeadm init --kubernetes-version=v1.11.1      //不指定其他网络插件具�
 
 稍等几分钟就可以看到
 
-![](C:\Users\Administrator\Desktop\pic-user-blog\kubeadm init执行成功.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/47931854.jpg)
 
 
 
@@ -261,7 +276,7 @@ kubeadm init --kubernetes-version=v1.11.1      //不指定其他网络插件具�
 
 node01加入机器
 
-![](C:\Users\Administrator\Desktop\pic-user-blog\集群加入.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/35285354.jpg)
 
 
 
@@ -273,7 +288,7 @@ node01加入机器
 kubectl get nodes  //在主节点上查看
 ```
 
-![](C:\Users\Administrator\Desktop\pic-user-blog\列出nodes.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/60612948.jpg)
 
 
 
@@ -299,6 +314,46 @@ kubelet get ns
 
 查看集群是否起来了
 kubelet get nodes   //显示ready状态就是起来了
+
+
+
+注意:
+如果要开启flannel的directrouting功能的话 可以先wget下这个yaml文件 之后再修改配置
+操作如下:
+1.先下载yaml文件
+
+wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+
+2.编辑刚刚下载好的文件
+
+vim https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+找到如下片段:
+net-conf.json: |
+    {
+      "Network": "10.244.0.0/16",
+      "Backend": {
+        "Type": "vxlan"
+      }
+    }
+    
+    
+再原来基础上加上directrouting功能 ,修改完成之后应该是这样的:
+net-conf.json: |
+    {
+      "Network": "10.244.0.0/16",
+      "Backend": {
+        "Type": "vxlan",
+        "Directrouting": true
+      }
+    }
+    
+之后保存退出
+之后再应用:
+https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+这样以后各个节点通信的话 就是通过物理网卡直接通信了 可以用ip route show 命令查看规则 , 在节点上用tcpdump -i ens32 -nn icmp 抓包看
 ```
 
 
@@ -348,7 +403,7 @@ docker官方给出的设置http代理方法如下:
 1. vim /usr/lib/systemd/system/docker.service
 
 在[Service]中添加如下信息
-Environment="HTTP_PROXY=http:xxxxx:10080"
+Environment="HTTP_PROXY=http:xxxxx:80"
 Environment="NO_PROXY=127.0.0.0/8,192.168.0.0/16"    
 
 #这里的192.168.0.0/16是自己本地的网络,替换成自己的本地网络地址
@@ -364,6 +419,20 @@ systemctl start docker
 
 
 
+下面列出几个比较好用的http代理网站
+
+http://cn-proxy.com/archives/218
+
+https://www.kuaidaili.com/free/intr/
+
+http://www.66ip.cn/
+
+http://www.xicidaili.com/
+
+http://www.coobobo.com/
+
+
+
 #### 方法2:使用中转站来拉去镜像
 
 1. 一般来说 ,由于网络被墙 , 许多人开始做这个工作了 , 就是把google的相关镜像拉去到dockerhub上  , 之后我们在dockerhub上来下载所需的镜像 , 在安装特定的版本的时候会要求特定的镜像 , 这个时候可以去[mirrorgooglecontainers](https://hub.docker.com/u/mirrorgooglecontainers/) 找 , 如果版本没有更新 ,可以试试以下方法:
@@ -372,37 +441,35 @@ systemctl start docker
 
    在执行`kubeadm init`的时候对于没有拉取下来的镜像,可以直接到[k8s.gcr.io/google_containers](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL) 下载
 
-   ![](C:\Users\Administrator\Desktop\pic-user-blog\google云服务器拉取镜像.png)
+   ![](http://pe9685fps.bkt.clouddn.com/18-9-2/94357091.jpg)
 
 2. 启动控制台
 
     
 
-![](C:\Users\Administrator\Desktop\pic-user-blog\连接google云.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/23538517.jpg)
 
 3. 以kube-apiserver-amd64为例子 ,搜索kube-apiserver-amd64
 
-   ![](C:\Users\Administrator\Desktop\pic-user-blog\搜索kube-apiserver-amd64.png)
+   ![](http://pe9685fps.bkt.clouddn.com/18-9-2/92677484.jpg)
 
-   
 
-   
+
+
 
    点击kube-apiserver-amd64  我们安装v1.11.1的 点击标记为v1.11.1的镜像
 
-   ![](C:\Users\Administrator\Desktop\pic-user-blog\kube-apiserver-amd64-v1.11.1.png)
-
-   
+   ![](http://pe9685fps.bkt.clouddn.com/18-9-2/52251691.jpg)
 
 4. 运行拉取命令
 
-   ![](C:\Users\Administrator\Desktop\pic-user-blog\运行命令拉取kube-apiserver.png)
+   ![](http://pe9685fps.bkt.clouddn.com/18-9-2/99511944.jpg)
 
 5. 中转镜像 , 把镜像拉取出来传到dockerhub上自己的仓库  之后拉取push上的镜像
 
    
 
-![](C:\Users\Administrator\Desktop\pic-user-blog\中转镜像.png)
+![](http://pe9685fps.bkt.clouddn.com/18-9-2/57435961.jpg)
 
 6. docker获取刚刚上传的镜像并打上k8s.gcr.io/的前缀tag
 

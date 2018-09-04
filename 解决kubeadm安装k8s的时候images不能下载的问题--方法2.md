@@ -19,7 +19,7 @@ yum install -y docker-ce
 1. vim /usr/lib/systemd/system/docker.service
 
 在[Service]中添加如下信息
-Environment="HTTPS_PROXY=http://www.ik8s.io:10080"
+Environment="HTTPS_PROXY=xxxx:80"
 Environment="NO_PROXY=127.0.0.0/8,192.168.0.0/16"    
 
 #这里的192.168.0.0/16是自己本地的网络,替换成自己的本地网络地址   

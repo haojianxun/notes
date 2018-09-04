@@ -1,0 +1,31 @@
+-a    all append
+-b    buffer缓冲区 或者 数据块block,带参数; batch批处理, black空白字符
+-c    commend命令 带参数, character字符 check检查 create创建
+-d    debug调试 delete删除 directory目录
+-D    define定义
+-e    execute执行  edit编辑 exclude排除  extend扩展
+-f    file文件  force强制 
+-F fs filed-separator  分隔符
+-g    GDB
+-h    header表头  help帮助 humanread人类可读的 
+-i    initiallize初始化   ignorance忽略  交互interactive  接口interface
+-I    include包含 
+-k    keep保留  kill杀死
+-l    list列出 long长格式 login登录 load加载 length长度 lock锁定 listening监听的端口
+-m    message消息 mail邮件 mode模式 modify修改
+-n    number数字数目 not否 numeric 数字
+-o    output输出 only仅仅(grep)
+-p    port端口 protocol协议
+-q    quite安静静默
+-r    recurse递归 reverse反向 
+-s    silent缄默 subject主题 size大小
+-t    tag标记 tab默认分隔符 type类型
+-u    user用户  update更新
+-v    verbose详细信息,冗长   可视化
+-V    version版本
+-w    width宽度  warning警告
+-x    启用调试  extract提取
+-y    yes
+-z    压缩 
+-Z    context
+

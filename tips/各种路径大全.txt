@@ -1,0 +1,27 @@
+yumԴ  /etc/yum.repos.d
+
+etc/passwd 用于设置 SHELL环境变量的值
+
+别名的另一个常见用法是用于根用户。cp、rm和 mv命令通常别名化来包含 -i参数，以帮助预防意外破坏文件。您可以检查您自己的系统上的这些别名
+/root/.bashrc  该别名的路径
+
+/etc/DIR_COLORS 改文件的颜色显示
+
+/misc/cd  挂载iso镜像
+
+/etc/centos-release 操作系统版本的配置
+/etc/issue 登陆的提示信息配置
+
+/var/log/wtmp  看用户登陆历史的
+
+echo ' - - -' > /sys/class/scsi_host/host2/scan 
+虚拟机增加了一块磁盘，读不出来，使用这个命令可以使它立刻增加进去。
+命令历史放在 .bash_history
+
+.bash_profile 可以更改history的各种配置
+
+ 硬件时钟通常被设置成全球标准时间（UTC），而将时区信息保存在/usr/share/lib/timezone （或者在某些系统中可能是/usr/local/timezone）目录下某个适当的文件中，然后用一个符号链接文件/etc/localtime指向它。
+ 是的
+ >是的
+ 是的
+ 

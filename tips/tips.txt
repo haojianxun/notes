@@ -1,0 +1,61 @@
+在vim下 输入颜色的时候 \033
+按ctrl+v+[
+
+！！是上一个命令 在Linux中念作bang-bang 有点像开枪的声音
+
+Meta是早起终端机上的特殊按键 现在alt键取代了它 
+find / -tpye f |xargs -n 1 grep linux
+
+/和/root是不一样的  前者代表根目录 后者是root的用户的家目录
+
+一切皆文件  有个例外就是网卡 应用程序并非通过/dev来访问网卡 而且通过linux内核提供的软件队列来收发网络封包,事实上,大多数应用程序也不是通过内核队列来访问网络  而且通过socket
+
+重定向中 m>&n 的意思是将m指向n所指之处
+
+#!  读做shabang  为什么这样读呢 #不是键盘上的#而且音乐符上的# 音乐符#代表升半声 比如c#就读作c sharp  !读作bang 比如shell中的调用历史命令的!!就读作bang-bang 读音类似于开枪的声音
+
+/dev/null  叫做bit bucket 位桶
+i18n internationalization i18n的含义就是说这个单词开头是i结尾是n  中间有18个单词 ---- 国际化
+i10n  本地化  localization 理由同前
+用来控制让哪种语言和文化环境生效的功能叫做locale
+locale相关（环境）变量生效的优先顺序：[1]
+LANGUAGE 指定个人对语言环境值的主次偏好，例如zh_CN:en_US:en
+LC_ALL 这不是一个环境变量，是一个可被C语言库函数setlocale设置的宏，其值可覆盖所有其他的locale设定。因此缺省时此值为空
+LC_xxx 可设定locale各方面（category）的值，可以覆盖LANG的值。
+LANG 指定默认使用的locale值
+
+网络总开关在/etc/sysconfig/network  修改NETWORKING=no  就可以关闭总开关  yes代表开
+
+hostname的修改  /etc/hostname  /proc/sys/kernel/hostname
+
+查看最后关机时间
+last -x |grep shutdown
+
+linux下要是服务以d结尾 大多数表示是deamon 守护进程    要是文件夹以d结尾 表示 这个是个文件集合  d表示directory  
+
+
+
+
+我们在使用linux系统中,比如做某个脚本开机时自动运行，就要和/etc/rc.d/rc.local这个文件打交道，那么rc到底是什么意思呢？“rc”，它是“runcomm”的缩写――即名词“run command”(运行命令)的简写。
+
+
+"rc" 是取自 "runcom", 来自麻省理工学院在 1965 年发展的 CTSS系统。相关文献曾记载这一段话："具有从档案中取出一系列命令来执行的功能；这称为 "run commands" 又称为 "runcom"，而这种档案又称为一个 runcom (a runcom)。"
+
+
+rc”是任何脚本类文件的后缀，这些脚本通常在程序的启动阶段被调用，通常是Linux系统启动时。如/etc/rc（连接到/etc/rc.d/rc）是Linux启动的主脚本，而.bashrc是当Linux的bash shell启动后所运行的脚本。
+
+.bashrc的前缀“.”是一个命名标准，它被设计用来在用户文件中隐藏那些用户指定的特殊文件;“ls”命令默认情况下不会列出此类文件，“rm”默认情况下也不会删除它们。许多程序在启动时，都需要“rc”后缀的初始文件或配置文件，这对于Unix的文件系统视图来说，没有什么神秘的
+
+
+
+9.  if [ $foo -eq 0 ]这个方括号跟Java/PHP里if后面的圆括号大不相同，它是一个可执行程序（和cd, ls, grep一样），想不到吧？在CentOS上，它在/usr/bin目录下：
+ll /usr/bin/[
+-rwxr-xr-x. 1 root root 33408 6月  22 2012 /usr/bin/[
+正因为方括号在这里是一个可执行程序，方括号后面必须加空格，不能写成if [$foo -eq 0]
+
+
+
+
+
+
+

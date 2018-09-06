@@ -2,9 +2,9 @@
 
 ## emptyDir类型
 
-```
+```yaml
 apiVersion: v1
-kind: pod
+kind: Pod
 metadata:
   name: pod-demo
   namespace: default
@@ -25,7 +25,7 @@ spec:
     - name: html
       mountPath: /usr/share/nginx/html/
   - name: busybox
-    image:busybox:latest
+    image: busybox:latest
     imagePullPolicy: IfNotPresent
     volumeMounts:
     - name: html
@@ -36,7 +36,7 @@ spec:
     - "while true; do echo $(data) >> /data/index.html; sleep 2; done"
   volumes:
   - name: html
-    emptyDir:{}
+    emptyDir: {}
     
 ```
 
@@ -44,7 +44,7 @@ spec:
 
 ## hostPath类型
 
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -103,7 +103,7 @@ yum install -y nfs-utils
 
 vim pod-vol-nfs.yaml
 
-```
+```yaml 
 apiVersion: v1
 kind: Pod
 metadata:
@@ -173,7 +173,9 @@ showmount -e
 
 ## 定义一个NFS类型的PV
 
-```
+vim pv-demo.yaml
+
+```yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -245,9 +247,9 @@ spec:
     storage: 20Gi
 ```
 
-创建一个PVC
+### 创建一个PVC
 
-```
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

@@ -1,5 +1,9 @@
 # 使用kubeadm从0开始搭建kubernetes:v1.11.1
 
+[TOC]
+
+
+
 ## 准备阶段
 
 ### 前期准备

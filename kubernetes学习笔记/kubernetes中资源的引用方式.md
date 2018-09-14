@@ -13,3 +13,12 @@ selfLink: /api/v1/namespaces/default/pods/nginx-deploy-59c86578c8-ml57k
 ```
 
 可以用curl访问
+
+
+
+
+
+svc的资源记录
+
+`svc.cluster.local.` 
+

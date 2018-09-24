@@ -8,6 +8,8 @@ for file in configmap.yaml default-backend.yaml namespace.yaml rbac.yaml tcp-ser
 
 ### 部署一个NodePort
 
+讲上面下载好的文件先应用起来 , 这个时候去名为`ingress-nginx`的名称空间去看的话 发现`nginx-ingress-controller`这个pod已经跑起来了 , 不过这个时候它还不能接入外部流量 ,我们要把它部署为一个nodeport 让它
+
 官方给出的做法是:
 
 ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/baremetal/service-nodeport.yaml
@@ -191,13 +193,19 @@ spec:
           servicePort: 80
 ```
 
+上述内容中:
+
+` kubernetes.io/ingress.class: "nginx"` 表示 ingress controller创建的ingress规则类型用的是nginx
+
+
+
 应用这个写好的yaml
 
 ```
 kubectl apply -f ingress-myapp.yaml
 ```
 
-查看这个创建好的ingress
+查看这个创建好的ingress具体规则
 
 ```
 kubectl get ingerss
@@ -209,9 +217,9 @@ kubectl get ingerss
 kubectl describe ingress ingerss-myapp
 ```
 
-验证
+#### 验证
 
-查看ingress的相关pod
+查看ingress controller的相关pod
 
 ```
 kubectl get pods -n ingress-nginx
@@ -220,12 +228,12 @@ kubectl get pods -n ingress-nginx
 进pod去查看
 
 ```
-kubectl exec -n ingress-nginx -it INGRESS-NGINX-NAME -- /bin/sh
+kubectl exec -n ingress-nginx -it NGINX-INGRESS-CONTROLLER-NAME -- /bin/sh
 
 进去之后查看文件
 cat nginx.conf
 
-即可看到已经自动把规则写好了
+即可看到已经自动把ingress规则写好了
 ```
 
 ### 访问pod

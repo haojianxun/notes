@@ -14,7 +14,7 @@
 
 
 
-以后用户访问api群组 , 是通过kube-aggegator来访问 , 这个kube-aggegator同时聚合了由kubernetes自己提供的api群组和metrics-server提供的群组
+以后用户访问api群组 , 是通过**kube-aggegator**这个中间层来访问 , 访问资源通过/apis/metrics.k8s.io/v1beta1 这个群组来访问 , 以后访问资源群组就可以只通过这个**kube-aggegator** 来访问了,  因为这个kube-aggegator同时聚合了由kubernetes自己提供的api群组和metrics-server提供的群组
 
 
 

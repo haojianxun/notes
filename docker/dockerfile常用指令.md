@@ -81,6 +81,8 @@ RUN has 2 forms:
 
   不会以`/bin/sh -c` 发起, 所以shell中常用的变量替换,通配符都不支持 ,如果要运行有shell特性命令的话可以使用 `RUN ["/bin/sh","-c","executable", "param1", "param2"]`
 
+一般情况是在docker build 的时候运行
+
 ## CMD
 
 The `CMD` instruction has three forms:
@@ -95,12 +97,18 @@ run命令运行在容器构建过程中 , 而cmd命令是基于dockerfile构建�
 
 cmd命令在于为容器启动默认的运行程序 , 而且运行结束 容器终止, 可以被docker run命令所覆盖
 
+cmd的指令在于为启动的容器运行一个默认的程序 , 而且运行结束后, 容器也终止 , cmd命令可以被docker run的命令行选项所覆盖
+
+只有最后一个cmd还会有效 之前的会被覆盖无效
+
 ## ENTRYPOINT
 
 ENTRYPOINT has two forms:
 
 - `ENTRYPOINT ["executable", "param1", "param2"]` (*exec* form, preferred)
 - `ENTRYPOINT command param1 param2` (*shell* form)
+
+entrypoint用于为容器指定默认运行程序, 从而使得容器像是一个单独的程序
 
 entrypoint默认用的是/bin/sh -c来启动的  第二种方法后面跟的命令是用shell起的 但是在容器的表现是 后面起的命令pid是1  可以配合cmd命令来使用
 

@@ -117,7 +117,7 @@ kubectl apply -f ./
 查看刚刚部署的metrics-server
 
 ```
-kubectl proxy --port:8080  //打开一个反代接口
+kubectl proxy --port=8080  //打开一个反代接口
 curl http://localhost:8080/api/metrics.k8s.io/v1beta1
 curl http://localhost:8080/api/metrics.k8s.io/v1beta1/nodes
 ```

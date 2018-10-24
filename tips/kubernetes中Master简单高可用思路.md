@@ -1,0 +1,3 @@
+# kubernetes中Master简单高可用思路
+
+把APIServer这种组件通过DaemonSet的方式来进行管理，启动3个APIServer。这3个APIServer都能同时对外提供服务，另外两个Master组件Controller-Manager，Scheduler是通过Deployment来启动的，也是启动了3个。而ETCD也是通过集群的方式来保证可用性的。通过这些操作就可以保证Master挂掉一个，还有另外两个提供服务

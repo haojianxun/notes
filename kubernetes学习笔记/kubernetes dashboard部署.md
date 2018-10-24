@@ -1,4 +1,4 @@
-# kubernetes dashboard部署
+# kubernetes dashboard部署(NodePort模式)
 
 1. ### 部署
 

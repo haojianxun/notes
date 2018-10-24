@@ -104,11 +104,11 @@ cat ~/.ssh/id_ras.pub   //将这个公钥的内容复制下来
 
 之后就是创建服务账号
 
-![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/google%20cloud%E6%9C%8D%E5%8A%A1%E8%B4%A6%E5%8F%B7.png?q-sign-algorithm=sha1&q-ak=AKIDNTfgVCZGqUAnTDhocmyBQoCjJIMEZTu8&q-sign-time=1539336954;1539337854&q-key-time=1539336954;1539337854&q-header-list=&q-url-param-list=&q-signature=19998737aace69317516e3c658897775a792338e)
+![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/google%20cloud%E6%9C%8D%E5%8A%A1%E8%B4%A6%E5%8F%B7.png)
 
 进入之后创建服务账号
 
-![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E8%B4%A6%E5%8F%B7.png?q-sign-algorithm=sha1&q-ak=AKIDNTfgVCZGqUAnTDhocmyBQoCjJIMEZTu8&q-sign-time=1539336977;1539337877&q-key-time=1539336977;1539337877&q-header-list=&q-url-param-list=&q-signature=efd1e23d1467371caf14d2bf916a5e0408b61330)
+![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E8%B4%A6%E5%8F%B7.png)
 
 
 
@@ -116,7 +116,7 @@ cat ~/.ssh/id_ras.pub   //将这个公钥的内容复制下来
 
 创建完成之后就创建密钥 , 之后下载下来保存 , 保存为gcloud.config.json
 
-![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/%E5%88%9B%E5%BB%BA%E5%AF%86%E9%92%A5.png?q-sign-algorithm=sha1&q-ak=AKIDNTfgVCZGqUAnTDhocmyBQoCjJIMEZTu8&q-sign-time=1539337000;1539337900&q-key-time=1539337000;1539337900&q-header-list=&q-url-param-list=&q-signature=b0101ac87075ecf0b8a9dd2521ab72bc1ee7d963)
+![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/%E5%88%9B%E5%BB%BA%E5%AF%86%E9%92%A5.png)
 
 
 
@@ -485,7 +485,7 @@ main
 
 用自己的github账号登陆, 登陆上去之后同步自己的仓库 , 打开要同步的仓库即可
 
-![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/%E5%90%8C%E6%AD%A5travis%E4%BB%93%E5%BA%93.png?q-sign-algorithm=sha1&q-ak=AKIDNTfgVCZGqUAnTDhocmyBQoCjJIMEZTu8&q-sign-time=1539337028;1539337928&q-key-time=1539337028;1539337928&q-header-list=&q-url-param-list=&q-signature=8826298aa74509521264ef87e17b88589fae27b3)
+![](https://md-image-1257428480.cos.ap-shanghai.myqcloud.com/pic-user-blog/%E5%90%8C%E6%AD%A5travis%E4%BB%93%E5%BA%93.png)
 
 ## 推送仓库到github上
 

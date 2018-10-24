@@ -1,0 +1,3 @@
+# kubernetes中dns service ip 问题
+
+DNS Service  IP和Kubelet --cluster-dns参数不匹配的问题。Kubeadm默认创建两个service，一个service是用来暴露 APIServer服务的，另外一个service是用来暴露Kube DNS的服务的，这两个服务地址不是随机生成的，是有一定规则的。Kubeadm 首先会指定一个service ip的范围，默认值是10.96 .0.0/16，根据这个范围就可以按照一定的规则生成两个地址。APIServer 服务的地址会取这个网段的第一个地址，也就是10.96.0.1，Kube dns更加死板，会把最后0前面加一个1，就作为service ip， 即10.96.0.10，而且不能修改配置方式。所以这是一个默认的规则。Kubelet还有一个参数叫-- cluster-dns，每当Kubelet启动一个pod的时候，利用这个参数昨 为这个容器的nameserver。也就是说这个容器如果它想要解析域名 的时候，它的DNS服务的nameserver是 什么。如果你想采用集群里面DNS服务，必须指定为Kube DNS 的  server ip，默认的情况，它配置的就是10.96.0.10，如果采用默认配置不会发现任何问题，集群工作好好的。但是一旦在生产环境中，比如你的环境，需要更换service ip 的范围，它会新生成新的Kube- DNS的ip，如果不及时同步，会导致你启动的pod无法使用这个DNS 的服务。这是我们当时遇到的问题，希望大家之后避免
